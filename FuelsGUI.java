@@ -179,8 +179,8 @@ implements ActionListener
 		        			  "overwritten if you process data!", 
 		        			  "Warning", JOptionPane.WARNING_MESSAGE);
 		          }
-		          outputFileTxtFld.setText(files[0].getParent());
-		          lastFilePath = files[0].getPath();
+		          outputFileTxtFld.setText(files[0].getPath());
+		          lastFilePath = files[0].getParent();
 		          outputSel = true;
 		          if (standSel&&transectSel&&dSel&&outputSel)
 		          {

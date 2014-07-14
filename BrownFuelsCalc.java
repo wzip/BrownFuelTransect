@@ -35,7 +35,7 @@ public class BrownFuelsCalc
 	public static double tonsLitter(double avgInchesLitter)
 	{
 		double t;
-		t = 0.4159375*avgInchesLitter;
+		t = 4.991250*avgInchesLitter;
 		return t;
 	}//end tonsLitter
 	
@@ -46,7 +46,7 @@ public class BrownFuelsCalc
 	public static double tonsDuff(double avgInchesDuff)
 	{
 		double t;
-		t = 0.831875*avgInchesDuff;
+		t = 9.982500*avgInchesDuff;
 		return t;
 	}//end tonsDuff
 	
@@ -143,7 +143,7 @@ public class BrownFuelsCalc
 		return t;
 	}//end nrcTons3pS
 	
-	//USFS Northern Region Composite tons/acre 3+" sound
+	//USFS Northern Region Composite tons/acre 3+" rotten
 	//inputs: tot. length of sampling plane,
 	//avg. slope correction factor, sum of d squared
 	public static double nrcTons3pR(int nL, double c, double sumD2)

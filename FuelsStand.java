@@ -19,6 +19,7 @@ public class FuelsStand
 	private double sumD2ThreePs;
 	private double sumD2ThreePr;
 	private int nTsects;
+	private String date;
 	//weights
 	private double tonsAcLitter;
 	private double tonsAcDuff;
@@ -134,6 +135,10 @@ public class FuelsStand
 	{
 		nTsects = n;
 	}
+	public void setDate (String d)
+	{
+		date = d;
+	}
 	
 	//get methods
 	public String getStandId()
@@ -239,5 +244,9 @@ public class FuelsStand
 	public int getNTsects()
 	{
 		return nTsects;
+	}
+	public String getDate()
+	{
+		return date;
 	}
 }//end class

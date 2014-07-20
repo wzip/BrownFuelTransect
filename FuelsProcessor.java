@@ -45,7 +45,7 @@ public class FuelsProcessor
 			//Create file writer for outputs
 			BufferedWriter out = new BufferedWriter(new FileWriter(outputFile));
 			//write header to output file------------------------------------------------------------
-			out.write("StandId,AvgPerSlope,SlopeCorFactor,AvgLitterIn,AvgDuffIn,LitterTonsAc,"+
+			out.write("StandId,Date,AvgPerSlope,SlopeCorFactor,AvgLitterIn,AvgDuffIn,LitterTonsAc,"+
 			"DuffTonsAc,QtrInTonsAc,OneInTonsAc,ThreeInTonsAc,ThreeInPlsSTonsAc,"+
 			"ThreeInPlsRTonsAc,TotTonsAc\n");
 			
@@ -78,9 +78,10 @@ public class FuelsProcessor
 					//get tokens for each stand in line
 					String[] standTokens = standLine.split(DELIMITER);
 					stand.setStandId(standTokens[0]);
-					stand.setPlane1(Integer.parseInt(standTokens[1]));
-					stand.setPlane3(Integer.parseInt(standTokens[2]));
-					stand.setPlaneThreeP((Integer.parseInt(standTokens[3])));
+					stand.setDate(standTokens[1]);
+					stand.setPlane1(Integer.parseInt(standTokens[2]));
+					stand.setPlane3(Integer.parseInt(standTokens[3]));
+					stand.setPlaneThreeP((Integer.parseInt(standTokens[4])));
 					
 					//loop to process transect data for each stand
 					while((tsectLine = tsectBr.readLine()) != null)
@@ -175,7 +176,7 @@ public class FuelsProcessor
 							stand.getTonsAc3pR());
 					
 					//write output line to file----------------------------------------------------------------
-					out.write(stand.getStandId()+","+stand.getAvgPerSlope()+","+stand.getC()+","+
+					out.write(stand.getStandId()+","+stand.getDate()+","+stand.getAvgPerSlope()+","+stand.getC()+","+
 					stand.getAvgLitterDepth()+","+stand.getAvgDuffDepth()+","+stand.getTonsAcLitter()+
 					","+stand.getTonsAcDuff()+","+stand.getTonsAcQtrIn()+","+stand.getTonsAc1In()+","+
 					stand.getTonsAc3In()+","+stand.getTonsAc3pS()+","+stand.getTonsAc3pR()+","+

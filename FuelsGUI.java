@@ -13,7 +13,7 @@ implements ActionListener
 	//declarations
 	//labels and text fields
 	private JLabel header = new JLabel("Brown Fuels Calculator");
-	private JLabel version = new JLabel("Version 1.0 beta");
+	private JLabel version = new JLabel("     Version 1.0    ");
 	private JTextField outputFileTxtFld = new JTextField("Output CSV", 20);
 	private JTextField standTxtFld = new JTextField("Stand Data CSV", 20);
 	private JTextField transectTxtFld = new JTextField("Transect Data CSV", 20);
@@ -32,6 +32,11 @@ implements ActionListener
 	private JPanel inputPanel02 = new JPanel();
 	private JPanel inputPanel03 = new JPanel();
 	private JPanel processPanel = new JPanel();
+	//JMenuBar, JMenus, and JMenuItems
+	private JMenuBar mainMenuBar = new JMenuBar();
+	private JMenu aboutMenu = new JMenu("About");
+	private JMenuItem licenseItem = new JMenuItem("License");
+	private JMenuItem aboutItem = new JMenuItem("About");
 	//files
 	File[] files = new File[4];
 	//other vars and constants
@@ -59,6 +64,14 @@ implements ActionListener
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		con.setLayout(new GridLayout(ROWS,COLS,GAP,GAP));
 		this.setSize(325, 500);
+		//add main menu bar, menus, and menu items
+		setJMenuBar(mainMenuBar);
+		mainMenuBar.add(aboutMenu);
+		aboutMenu.add(licenseItem);
+		licenseItem.addActionListener(this);
+		aboutMenu.add(aboutItem);
+		aboutItem.addActionListener(this);
+
 		//add JPanels
 		con.add(headerPanel);
 		con.add(inputPanel01);
@@ -105,6 +118,28 @@ implements ActionListener
 		//Determine which button was clicked
 		switch (command)
 		{
+		case "About":
+			{
+			JOptionPane.showMessageDialog(null,
+					"                                               Brown Fuels Calculator\n"
+					+ "                                                          Version 1.0\n\n"
+					+ "The purpose of this project is to calculate weights of fine fuels and downed woody\n "
+					+ "material using the inventory methods described in Brown, 1974, \"The Handbook for \n"
+					+ "Inventorying Downed Woody Material\", USDA Forest Service\n"
+					+ "(http://www.fs.fed.us/rm/pubs_int/int_gtr016.pdf).  It uses the equations in the\n"
+					+ "handbook for a composite of species for the USDA Forest Service, Northern Region\n"
+					+ "to calculate fuel weights in tons per acre with exceptions for litter and duff weights.\n"
+					+ "For litter and duff weights, it uses the bulk densities given in the University of\n"
+					+ "Florida, Fuel Load Calculations Cheatsheet, Dr. Leda Kobziar.",
+					"About", JOptionPane.INFORMATION_MESSAGE);
+			break;
+			}//end case
+	case "License":
+			{
+			License l = new License();
+			break;
+			}//end case
+
 		case "Stand Data Browse":
 			{
 				//spawn chooser for stand data
